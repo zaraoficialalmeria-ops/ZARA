@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con nosotros - ZARA</title>
+    <style>
+        /* Estilos inspirados en la estética limpia, tipográfica y minimalista de Zara */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-family: "Didot", "Bodoni MT", "Cinzel", "Times New Roman", serif;
+            color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Texto ZARA legible con la estética e interlineado de la marca */
+        .marca-zara {
+            font-size: 75px;
+            font-weight: 400;
+            letter-spacing: -5px; /* Las letras de Zara van muy juntas, casi tocándose */
+            margin: 0 0 30px 0;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        /* Estilo para la pregunta */
+        h1 {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+        }
+
+        /* Botón elegante estilo Zara */
+        .btn-continuar {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid #000000;
+            padding: 14px 50px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-continuar:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Contenedor del video (oculto al principio) */
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Muestra el video completo sin recortar. Cambia a 'cover' si quieres que llene toda la pantalla */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="inicio-content">
+        <h2 class="marca-zara">Zara</h2>
+
+        <h1>¿Quieres trabajar en Zara?</h1>
+        
+        <button class="btn-continuar" onclick="mostrarVideo()">Continuar</button>
+    </div>
+
+    <div class="video-container" id="video-content">
+        <video id="miVideo" controls playsinline autoplay>
+            <source src="VIDEO1.mp4" type="video/mp4">
+            Tu navegador no soporta videos en HTML5.
+        </video>
+    </div>
+
+    <script>
+        function mostrarVideo() {
+            // Ocultamos la pregunta con una transición suave
+            document.getElementById('inicio-content').style.opacity = '0';
+            
+            setTimeout(function() {
+                document.getElementById('inicio-content').style.display = 'none';
+                
+                // Mostramos el contenedor del video
+                const videoCont = document.getElementById('video-content');
+                videoCont.style.display = 'flex';
+                
+                // Forzamos la reproducción automática tras hacer clic en continuar
+                const video = document.getElementById('miVideo');
+                video.play().catch(function(error) {
+                    console.log("La reproducción automática requirió interacción o el archivo no se encuentra: ", error);
+                });
+            }, 500); // Espera a que termine la animación de desaparición (0.5 segundos)
+        }
+    </script>
+
+</body>
+</html>
